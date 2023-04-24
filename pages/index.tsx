@@ -15,7 +15,7 @@ const Home = () => {
 
   async function getAllTweet() {
     await axios
-      .get("/api/tweet/all")
+      .get("http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003/all")
       .then((response) => {
         setTweets(response.data);
       })

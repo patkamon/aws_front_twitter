@@ -38,7 +38,7 @@ const Navbar = () => {
 
   async function getUserProfile() {
     await axios
-      .get("/api/user/profile", {
+      .get("http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile", {
         headers: {
           Authorization: "Bearer " + user?.token,
         },
@@ -66,7 +66,7 @@ const Navbar = () => {
   async function handleCallbackEditPopup(popupData: Array<Object>) {
     if (popupData) {
       await axios
-        .post("/api/user/profile", popupData, {
+        .post("http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile", popupData, {
           headers: {
             Authorization: "Bearer " + user?.token,
           },

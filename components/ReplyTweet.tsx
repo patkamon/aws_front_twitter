@@ -34,7 +34,7 @@ const ReTweet = (props: Props) => {
   useEffect(() => {
     async function getUserProfile() {
       await axios
-        .get(`/api/user/profile/${props.replyTweet.userId}`)
+        .get(`http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile/${props.replyTweet.userId}`)
         .then((response) => {
           let profile = response.data.profile.pop();
           profile["username"] = response.data.username;

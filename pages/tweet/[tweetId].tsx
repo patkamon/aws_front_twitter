@@ -37,7 +37,7 @@ const TweetPage = () => {
   useEffect(() => {
     async function getAllTweet() {
       await axios
-        .get(`/api/tweet/id/${router.query.tweetId}`)
+        .get(`http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003/id/${router.query.tweetId}`)
         .then((response) => {
           if (response.data.length == 0) {
             router.replace("/");
@@ -63,7 +63,7 @@ const TweetPage = () => {
     let user = JSON.parse(sessionStorage.getItem("user") || "{}");
     await axios
       .put(
-        `/api/tweet/comment/${router.query.tweetId}`,
+        `http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003/comment/${router.query.tweetId}`,
         { msg: replyText },
         {
           headers: {

@@ -49,7 +49,7 @@ const UserPage = () => {
     async function getUserProfile() {
       let user = JSON.parse(sessionStorage.getItem("user") || "{}");
       await axios
-        .get(`/api/user/profile/${router.query.userId}`)
+        .get(`http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile/${router.query.userId}`)
         .then((response) => {
           let profile = response.data.profile.pop();
           profile["username"] = response.data.username;
@@ -67,7 +67,7 @@ const UserPage = () => {
     async function getTweets() {
       let user = JSON.parse(sessionStorage.getItem("user") || "{}");
       await axios
-        .get("/api/tweet/", {
+        .get("http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003/", {
           headers: {
             Authorization: "Bearer " + user.token,
           },

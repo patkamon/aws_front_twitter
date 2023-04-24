@@ -71,7 +71,7 @@ const Tweet = (props: Props) => {
   useEffect(() => {
     async function getUserProfile() {
       await axios
-        .get(`/api/user/profile/${props.tweet.userId}`)
+        .get(`http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile/id/${props.tweet.userId}`)
         .then((response) => {
           let profile = response.data.profile.pop();
           profile["username"] = response.data.username;
@@ -127,7 +127,7 @@ const Tweet = (props: Props) => {
     setDeletePopup(false);
     if (popupData) {
       await axios
-        .delete(`/api/tweet/${props.tweet._id}`, {
+        .delete(`http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003/${props.tweet._id}`, {
           headers: {
             Authorization: "Bearer " + user?.token,
           },
@@ -146,7 +146,7 @@ const Tweet = (props: Props) => {
 
   async function handleLikeTweet() {
     await axios
-      .put(`/api/tweet/like/${props.tweet._id}`, null, {
+      .put(`http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003/like/${props.tweet._id}`, null, {
         headers: {
           Authorization: "Bearer " + user?.token,
         },

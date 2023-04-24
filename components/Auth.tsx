@@ -14,7 +14,7 @@ const Auth = () => {
   async function getUserProfile() {
     let user = JSON.parse(sessionStorage.getItem("user") || "{}");
     await axios
-      .get("/api/user/profile", {
+      .get("http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile", {
         headers: {
           Authorization: "Bearer " + user.token,
         },
@@ -35,7 +35,7 @@ const Auth = () => {
   async function handleCallbackLogIn(popupData: Array<Object>) {
     if (popupData) {
       await axios
-        .post("/api/user/login", popupData)
+        .post("http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/login", popupData)
         .then((response) => {
           setLogInPopup(false);
           sessionStorage.setItem("user", JSON.stringify(response.data));
@@ -53,7 +53,7 @@ const Auth = () => {
   async function handleCallbackCreateAcc(popupData: Array<Object>) {
     if (popupData) {
       await axios
-        .post("/api/user/signup", popupData)
+        .post("http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/signup", popupData)
         .then((response) => {
           setCreateAccPopup(false);
           setCreateProfilePopup(true);
@@ -72,7 +72,7 @@ const Auth = () => {
     let user = JSON.parse(sessionStorage.getItem("user") || "{}");
     if (popupData) {
       await axios
-        .post("/api/user/profile", popupData, {
+        .post("http://ec2-13-214-178-167.ap-southeast-1.compute.amazonaws.com:8001/profile", popupData, {
           headers: {
             Authorization: "Bearer " + user.token,
           },

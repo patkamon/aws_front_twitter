@@ -36,7 +36,7 @@ const PostTweet = () => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     await axios
-      .post("/api/tweet", inputData, {
+      .post("http://ec2-13-214-155-131.ap-southeast-1.compute.amazonaws.com:8003", inputData, {
         headers: {
           Authorization: "Bearer " + user?.token,
         },
